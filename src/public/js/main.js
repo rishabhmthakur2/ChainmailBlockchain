@@ -31,43 +31,45 @@ let handleSendTransaction = async (amount) => {
     const blessingCircle = new web3.eth.Contract(
       [
         {
+          "constant": true,
+          "inputs": [],
+          "name": "balanceOf",
+          "outputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": false,
           "inputs": [
             {
-              "internalType": "bool",
               "name": "_makePayment",
               "type": "bool"
             },
             {
-              "internalType": "address payable",
               "name": "_reciepent",
               "type": "address"
             }
           ],
           "name": "invest",
           "outputs": [],
+          "payable": true,
           "stateMutability": "payable",
           "type": "function"
         },
         {
           "inputs": [],
+          "payable": false,
           "stateMutability": "nonpayable",
           "type": "constructor"
-        },
-        {
-          "inputs": [],
-          "name": "balanceOf",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "view",
-          "type": "function"
         }
       ],
-      '0xf9c52b2b929E73316cCC50a0194d34D5049291AA',
+      'THAzzbMJT1UGLxbpg9RNo86Zaek3miScjM',
     );
     try {
       fetch('/checkCircleAlmostFull?id='+senderAddress+'&amount='+amount, {
